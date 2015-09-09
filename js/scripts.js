@@ -17,7 +17,9 @@ var pigLatinify = function(string) {
       }
     }
   }
-  string += "ay";
+  if (string !== "-") {
+    string += "ay";
+  }
   return string;
 };
 
