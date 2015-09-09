@@ -21,13 +21,28 @@ var pigLatinify = function(string) {
   return string;
 };
 
+var interpretPunctuation = function(string) {
+  var punctuation = ["!", "?", ",", ".", ":", ";"];
+  var arr = string.split('');
+  for(var j = 0; j < arr.length; j++) {
+    if (punctuation.indexOf(arr[j]) !== -1) {
+      arr.push(arr[j]);
+      arr.splice(j, 1);
+      break;
+    }
+  }
+  string = arr.join('');
+  return string;
+};
+
 var pigLatinSentence = function(string) {
   var arr = string.split(' ');
   var newarr = [];
   for(var i = 0; i < arr.length; i++) {
-    newarr.push(pigLatinify(arr[i]))
+    newarr.push(pigLatinify(arr[i]));
   }
   var str = newarr.join(' ');
+  str = interpretPunctuation(str);
   return str;
 };
 
