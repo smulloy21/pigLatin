@@ -38,11 +38,12 @@ var interpretPunctuation = function(string) {
 var pigLatinSentence = function(string) {
   var arr = string.split(' ');
   var newarr = [];
+  var newWord
   for(var i = 0; i < arr.length; i++) {
-    newarr.push(pigLatinify(arr[i]));
+    newWord = pigLatinify(arr[i]);
+    newarr.push(interpretPunctuation(newWord));
   }
   var str = newarr.join(' ');
-  str = interpretPunctuation(str);
   return str;
 };
 
